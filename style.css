@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+/* GOOGLE FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 * {
   margin: 0;
@@ -7,6 +8,7 @@
   font-family: 'Poppins', sans-serif;
 }
 
+/* BODY */
 body {
   background: linear-gradient(135deg, #0f172a, #1e293b);
   color: white;
@@ -17,7 +19,8 @@ nav {
   display: flex;
   justify-content: center;
   gap: 30px;
-  padding: 20px;
+  padding: 15px;
+  flex-wrap: wrap;
   backdrop-filter: blur(10px);
   background: rgba(255,255,255,0.05);
 }
@@ -26,10 +29,23 @@ nav a {
   color: #6366f1;
   text-decoration: none;
   font-weight: 500;
+  position: relative;
 }
 
-nav a:hover {
-  color: #22c55e;
+/* NAV HOVER ANIMATION */
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #22c55e;
+  left: 0;
+  bottom: -5px;
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
 }
 
 /* CONTAINER */
@@ -38,21 +54,28 @@ nav a:hover {
   text-align: center;
 }
 
-/* GLASS CARD */
+/* CARD */
 .card {
   background: rgba(255,255,255,0.05);
-  padding: 20px;
+  padding: 25px;
   margin: 20px auto;
   width: 80%;
   border-radius: 15px;
   backdrop-filter: blur(15px);
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: 0.4s;
+  animation: fadeIn 1s ease;
 }
 
-/* BUTTON GLASS EFFECT */
+/* CARD HOVER */
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+/* BUTTON */
 .btn {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 12px 25px;
   margin-top: 15px;
   border-radius: 10px;
   background: rgba(99,102,241,0.2);
@@ -63,8 +86,19 @@ nav a:hover {
   transition: 0.3s;
 }
 
+/* BUTTON HOVER */
 .btn:hover {
-  background: #6366f1;
+  background: linear-gradient(45deg, #6366f1, #22c55e);
+  transform: scale(1.05);
+}
+
+/* INPUTS */
+input, textarea {
+  width: 80%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-top: 10px;
 }
 
 /* FOOTER */
@@ -73,4 +107,41 @@ footer {
   padding: 20px;
   margin-top: 40px;
   background: rgba(255,255,255,0.05);
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 📱 RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .card {
+    width: 95%;
+  }
+
+  input, textarea {
+    width: 95%;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 14px;
+  }
 }
